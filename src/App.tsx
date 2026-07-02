@@ -10,6 +10,7 @@ import Division from "./pages/Division";
 import About from "./pages/About";
 import Shop from "./pages/Shop";
 import Contact from "./pages/Contact";
+import Preloader from "./components/Preloader";
 
 function CurrentPage() {
   const { route } = useRouter();
@@ -33,6 +34,7 @@ function Shell() {
     <div className="relative">
       <Cursor />
       <ScrollProgress />
+      <Preloader />
       <Header />
       <PageTransition>
         <CurrentPage />
