@@ -1,17 +1,33 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import { IMAGES } from "../data/site";
+
 export default function Preloader() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // 1. Gather all unique image URLs from the site configuration
+    const allUrls: string[] = [];
+    Object.values(IMAGES).forEach((val) => {
+      if (Array.isArray(val)) {
+        allUrls.push(...val);
+      } else if (typeof val === "string") {
+        allUrls.push(val);
+      }
+    });
+
     let imagesLoaded = 0;
-    // We need a tiny timeout to ensure React has flushed the initial render to the DOM
-    // so that document.images contains all the <img> tags we just mounted.
+
+    // We still use a small timeout to let the DOM settle, then grab DOM images too
     const timer = setTimeout(() => {
-      const images = Array.from(document.images);
-      const totalImages = images.length;
+      // Catch any stray DOM images (like logos/icons) not in the IMAGES object
+      const domImages = Array.from(document.images).map((img) => img.src);
+      
+      // Merge and deduplicate all URLs
+      const uniqueUrls = Array.from(new Set([...allUrls, ...domImages])).filter(Boolean);
+      const totalImages = uniqueUrls.length;
 
       let fontsLoaded = false;
       document.fonts.ready.then(() => {
@@ -36,29 +52,27 @@ export default function Preloader() {
       if (totalImages === 0) {
         checkComplete();
       } else {
-        images.forEach((img) => {
-          if (img.complete) {
+        // 2. Programmatically fetch every single image in the background
+        uniqueUrls.forEach((url) => {
+          const img = new Image();
+          img.onload = () => {
             imagesLoaded++;
             checkComplete();
-          } else {
-            img.addEventListener("load", () => {
-              imagesLoaded++;
-              checkComplete();
-            });
-            img.addEventListener("error", () => {
-              imagesLoaded++; // Still count as "processed" to prevent hanging
-              checkComplete();
-            });
-          }
+          };
+          img.onerror = () => {
+            imagesLoaded++; // Still count as processed to avoid hanging
+            checkComplete();
+          };
+          img.src = url;
         });
       }
     }, 50);
 
-    // Safety fallback: Never trap the user for more than 8 seconds
+    // Safety fallback: Never trap the user for more than 10 seconds (increased due to full site load)
     const fallback = setTimeout(() => {
       setProgress(100);
       setTimeout(() => setLoading(false), 500);
-    }, 8000);
+    }, 10000);
 
     return () => {
       clearTimeout(timer);
