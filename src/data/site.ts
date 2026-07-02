@@ -4,20 +4,20 @@ export type Image = string;
 
 
 export const IMAGES = {
-  heroBath: "/images/hero_bath.png",
+  heroBath: "/images/hero_bath.jpg",
   bath: [
-    "/images/bath_1.png",
-    "/images/bath_2.png",
-    "/images/bath_3.png",
-    "/images/bath_4.png",
-    "/images/bath_5.png",
-    "/images/bath_6.png",
+    "/images/bath_1.jpg",
+    "/images/bath_2.jpg",
+    "/images/bath_3.jpg",
+    "/images/bath_4.jpg",
+    "/images/bath_5.jpg",
+    "/images/bath_6.jpg",
   ],
   kitchen: [
-    "/images/kitchen_1.png",
-    "/images/kitchen_2.png",
-    "/images/kitchen_3.png",
-    "/images/kitchen_4.png",
+    "/images/kitchen_1.jpg",
+    "/images/kitchen_2.jpg",
+    "/images/kitchen_3.jpg",
+    "/images/kitchen_4.jpg",
     "/images/kitchen_5.jpg",
     "/images/kitchen_6.jpg",
   ],
