@@ -2,54 +2,49 @@
 
 export type Image = string;
 
+import heroBath from "../assets/images/hero_bath.jpg";
+import bath1 from "../assets/images/bath_1.jpg";
+import bath2 from "../assets/images/bath_2.jpg";
+import bath3 from "../assets/images/bath_3.jpg";
+import bath4 from "../assets/images/bath_4.jpg";
+import bath5 from "../assets/images/bath_5.jpg";
+import bath6 from "../assets/images/bath_6.jpg";
+import kitchen1 from "../assets/images/kitchen_1.jpg";
+import kitchen2 from "../assets/images/kitchen_2.jpg";
+import kitchen3 from "../assets/images/kitchen_3.jpg";
+import kitchen4 from "../assets/images/kitchen_4.jpg";
+import kitchen5 from "../assets/images/kitchen_5.jpg";
+import kitchen6 from "../assets/images/kitchen_6.jpg";
+import surface1 from "../assets/images/surface_1.jpg";
+import surface2 from "../assets/images/surface_2.jpg";
+import surface3 from "../assets/images/surface_3.jpg";
+import surface4 from "../assets/images/surface_4.jpg";
+import surface5 from "../assets/images/surface_5.jpg";
+import surface6 from "../assets/images/surface_6.jpg";
+import wood1 from "../assets/images/wood_1.jpg";
+import wood2 from "../assets/images/wood_2.jpg";
+import wood3 from "../assets/images/wood_3.jpg";
+import wood4 from "../assets/images/wood_4.jpg";
+import home1 from "../assets/images/home_1.jpg";
+import home2 from "../assets/images/home_2.jpg";
+import home3 from "../assets/images/home_3.jpg";
+import home4 from "../assets/images/home_4.jpg";
+import home5 from "../assets/images/home_5.jpg";
+import home6 from "../assets/images/home_6.jpg";
+import arch1 from "../assets/images/arch_1.jpg";
+import arch2 from "../assets/images/arch_2.jpg";
+import arch3 from "../assets/images/arch_3.jpg";
+import arch4 from "../assets/images/arch_4.jpg";
+import arch5 from "../assets/images/arch_5.jpg";
 
 export const IMAGES = {
-  heroBath: "/images/hero_bath.jpg",
-  bath: [
-    "/images/bath_1.jpg",
-    "/images/bath_2.jpg",
-    "/images/bath_3.jpg",
-    "/images/bath_4.jpg",
-    "/images/bath_5.jpg",
-    "/images/bath_6.jpg",
-  ],
-  kitchen: [
-    "/images/kitchen_1.jpg",
-    "/images/kitchen_2.jpg",
-    "/images/kitchen_3.jpg",
-    "/images/kitchen_4.jpg",
-    "/images/kitchen_5.jpg",
-    "/images/kitchen_6.jpg",
-  ],
-  surfaces: [
-    "/images/surface_1.jpg",
-    "/images/surface_2.jpg",
-    "/images/surface_3.jpg",
-    "/images/surface_4.jpg",
-    "/images/surface_5.jpg",
-    "/images/surface_6.jpg",
-  ],
-  wood: [
-    "/images/wood_1.jpg",
-    "/images/wood_2.jpg",
-    "/images/wood_3.jpg",
-    "/images/wood_4.jpg",
-  ],
-  home: [
-    "/images/home_1.jpg",
-    "/images/home_2.jpg",
-    "/images/home_3.jpg",
-    "/images/home_4.jpg",
-    "/images/home_5.jpg",
-    "/images/home_6.jpg",
-  ],
-  architecture: [
-    "/images/arch_1.jpg",
-    "/images/arch_2.jpg",
-    "/images/arch_3.jpg",
-    "/images/arch_4.jpg",
-    "/images/arch_5.jpg",
-  ],
+  heroBath,
+  bath: [bath1, bath2, bath3, bath4, bath5, bath6],
+  kitchen: [kitchen1, kitchen2, kitchen3, kitchen4, kitchen5, kitchen6],
+  surfaces: [surface1, surface2, surface3, surface4, surface5, surface6],
+  wood: [wood1, wood2, wood3, wood4],
+  home: [home1, home2, home3, home4, home5, home6],
+  architecture: [arch1, arch2, arch3, arch4, arch5],
 };
 
 

@@ -6,9 +6,8 @@ import { Kicker, SectionShell, SolidButton } from "../components/UI";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-const POOL = [...IMAGES.home, ...IMAGES.bath];
+const POOL = Object.values(IMAGES).flat();
 
-// Deterministically pick an image per group
 function imgFor(group: string) {
   let h = 0;
   for (let i = 0; i < group.length; i++) h = (h * 31 + group.charCodeAt(i)) >>> 0;
