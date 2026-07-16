@@ -1,3 +1,4 @@
+"use client";
 import {
   motion,
   useScroll,
@@ -5,6 +6,7 @@ import {
   useReducedMotion,
   useMotionValue,
   useSpring,
+  useInView,
   type Variants,
 } from "framer-motion";
 import {
@@ -188,16 +190,20 @@ export function ImageReveal({
   imgClassName?: string;
   delay?: number;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
+  const inView = useInView(ref, { once: true, margin: "-8% 0px" });
   return (
-    <div className={cn("relative overflow-hidden", className)}>
+    <div ref={ref} className={cn("relative overflow-hidden", className)}>
       <motion.img
         src={src}
         alt={alt}
         loading="lazy"
-        initial={reduce ? { opacity: 0 } : { clipPath: "inset(100% 0 0 0)", scale: 1.3 }}
-        whileInView={reduce ? { opacity: 1 } : { clipPath: "inset(0% 0 0 0)", scale: 1.08 }}
-        viewport={{ once: true, margin: "-8% 0px" }}
+        animate={
+          inView
+            ? reduce ? { opacity: 1 } : { clipPath: "inset(0% 0 0 0)", scale: 1.08 }
+            : reduce ? { opacity: 0 } : { clipPath: "inset(100% 0 0 0)", scale: 1.3 }
+        }
         transition={{ duration: 1.3, ease, delay }}
         className={cn("h-full w-full object-cover", imgClassName)}
       />

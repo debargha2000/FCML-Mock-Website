@@ -1,19 +1,22 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useRouter } from "./Router";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { DIVISIONS } from "../data/site";
 import { cn } from "../utils/cn";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-const LINKS: { label: string; route: Parameters<ReturnType<typeof useRouter>["navigate"]>[0] }[] = [
-  { label: "About", route: { name: "about" } },
-  { label: "Shop Home", route: { name: "shop" } },
-  { label: "Showrooms", route: { name: "contact" } },
+const LINKS: { label: string; href: string }[] = [
+  { label: "About", href: "/about" },
+  { label: "Shop Home", href: "/shop" },
+  { label: "Showrooms", href: "/contact" },
 ];
 
 export default function Header() {
-  const { navigate, route } = useRouter();
+  const pathname = usePathname() || "/";
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -31,11 +34,6 @@ export default function Header() {
     };
   }, [open]);
 
-  const go = (r: Parameters<typeof navigate>[0]) => {
-    setOpen(false);
-    navigate(r);
-  };
-
   return (
     <>
       <header
@@ -46,8 +44,9 @@ export default function Header() {
       >
         <div className="mx-auto flex max-w-[1500px] items-center justify-between px-6 md:px-10 lg:px-16">
           {/* Logo */}
-          <button
-            onClick={() => go({ name: "home" })}
+          <Link
+            href="/"
+            onClick={() => setOpen(false)}
             data-cursor
             className="group flex items-baseline gap-2"
           >
@@ -57,23 +56,24 @@ export default function Header() {
             <span className="hidden text-[0.6rem] uppercase tracking-[0.34em] text-clay sm:inline">
               India
             </span>
-          </button>
+          </Link>
 
           {/* Right cluster */}
           <div className="flex items-center gap-8">
             <nav className="hidden items-center gap-9 lg:flex">
               {LINKS.map((l) => (
-                <button
+                <Link
                   key={l.label}
-                  onClick={() => go(l.route)}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
                   data-cursor
                   className={cn(
                     "link-underline text-xs uppercase tracking-[0.2em] transition-colors",
-                    route.name === l.route.name ? "text-brass" : "text-ink/80 hover:text-ink"
+                    pathname === l.href ? "text-brass" : "text-ink/80 hover:text-ink"
                   )}
                 >
                   {l.label}
-                </button>
+                </Link>
               ))}
             </nav>
 
@@ -122,28 +122,32 @@ export default function Header() {
               <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
                 <nav className="flex flex-col">
                   {DIVISIONS.map((d, i) => (
-                    <motion.button
+                    <motion.div
                       key={d.slug}
-                      onClick={() => go({ name: "division", slug: d.slug })}
-                      data-cursor="view"
                       initial={{ opacity: 0, y: 40 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.25 + i * 0.07, duration: 0.7, ease }}
-                      className="group flex items-baseline gap-4 border-b border-paper/15 py-4 text-left md:py-5"
                     >
-                      <span className="text-xs text-paper/40">0{i + 1}</span>
-                      <span className="font-display text-4xl font-light leading-none text-paper/90 transition-colors duration-300 group-hover:text-brass-light md:text-5xl lg:text-6xl">
-                        {d.name}
-                      </span>
-                      <svg
-                        width="30"
-                        height="12"
-                        viewBox="0 0 30 12"
-                        className="mb-1 ml-auto -translate-x-3 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100"
+                      <Link
+                        href={`/division/${d.slug}`}
+                        onClick={() => setOpen(false)}
+                        data-cursor="view"
+                        className="group flex items-baseline gap-4 border-b border-paper/15 py-4 text-left md:py-5"
                       >
-                        <path d="M0 6h27m0 0L23 1m4 5l-4 5" stroke="#c4a06a" strokeWidth="1" />
-                      </svg>
-                    </motion.button>
+                        <span className="text-xs text-paper/40">0{i + 1}</span>
+                        <span className="font-display text-4xl font-light leading-none text-paper/90 transition-colors duration-300 group-hover:text-brass-light md:text-5xl lg:text-6xl">
+                          {d.name}
+                        </span>
+                        <svg
+                          width="30"
+                          height="12"
+                          viewBox="0 0 30 12"
+                          className="mb-1 ml-auto -translate-x-3 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100"
+                        >
+                          <path d="M0 6h27m0 0L23 1m4 5l-4 5" stroke="#c4a06a" strokeWidth="1" />
+                        </svg>
+                      </Link>
+                    </motion.div>
                   ))}
                 </nav>
 
@@ -157,14 +161,15 @@ export default function Header() {
                   <div className="flex flex-col gap-3">
                     <span className="eyebrow text-paper/40">Explore</span>
                     {LINKS.map((l) => (
-                      <button
+                      <Link
                         key={l.label}
-                        onClick={() => go(l.route)}
+                        href={l.href}
+                        onClick={() => setOpen(false)}
                         data-cursor
                         className="link-underline w-fit font-display text-2xl font-light text-paper/90"
                       >
                         {l.label}
-                      </button>
+                      </Link>
                     ))}
                   </div>
                   <div className="space-y-1 text-sm text-paper/50">

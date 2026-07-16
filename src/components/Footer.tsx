@@ -1,11 +1,12 @@
+"use client";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { useRouter } from "./Router";
+import Link from "next/link";
 import { DIVISIONS, LOCATIONS } from "../data/site";
 import { Marquee, Reveal } from "./Motion";
 
 export default function Footer() {
-  const { navigate } = useRouter();
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
 
@@ -67,13 +68,13 @@ export default function Footer() {
             <ul className="mt-6 space-y-3">
               {DIVISIONS.map((d) => (
                 <li key={d.slug}>
-                  <button
-                    onClick={() => navigate({ name: "division", slug: d.slug })}
+                  <Link
+                    href={`/division/${d.slug}`}
                     data-cursor
                     className="link-underline text-paper/75 hover:text-paper"
                   >
                     {d.name}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -85,14 +86,14 @@ export default function Footer() {
             <ul className="mt-6 space-y-3">
               {LOCATIONS.map((l) => (
                 <li key={l.city}>
-                  <button
-                    onClick={() => navigate({ name: "contact" })}
+                  <Link
+                    href="/contact"
                     data-cursor
                     className="group flex flex-col"
                   >
                     <span className="text-paper/85">{l.city}</span>
                     <span className="text-xs text-paper/40">{l.area}</span>
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
