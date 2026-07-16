@@ -2,42 +2,60 @@
 
 export type Image = string;
 
-import heroBath from "../assets/images/hero_bath.jpg";
-import bath1 from "../assets/images/bath_1.jpg";
-import bath2 from "../assets/images/bath_2.jpg";
-import bath3 from "../assets/images/bath_3.jpg";
-import bath4 from "../assets/images/bath_4.jpg";
-import bath5 from "../assets/images/bath_5.jpg";
-import bath6 from "../assets/images/bath_6.jpg";
-import kitchen1 from "../assets/images/kitchen_1.jpg";
-import kitchen2 from "../assets/images/kitchen_2.jpg";
-import kitchen3 from "../assets/images/kitchen_3.jpg";
-import kitchen4 from "../assets/images/kitchen_4.jpg";
-import kitchen5 from "../assets/images/kitchen_5.jpg";
-import kitchen6 from "../assets/images/kitchen_6.jpg";
-import surface1 from "../assets/images/surface_1.jpg";
-import surface2 from "../assets/images/surface_2.jpg";
-import surface3 from "../assets/images/surface_3.jpg";
-import surface4 from "../assets/images/surface_4.jpg";
-import surface5 from "../assets/images/surface_5.jpg";
-import surface6 from "../assets/images/surface_6.jpg";
-import wood1 from "../assets/images/wood_1.jpg";
-import wood2 from "../assets/images/wood_2.jpg";
-import wood3 from "../assets/images/wood_3.jpg";
-import wood4 from "../assets/images/wood_4.jpg";
-import home1 from "../assets/images/home_1.jpg";
-import home2 from "../assets/images/home_2.jpg";
-import home3 from "../assets/images/home_3.jpg";
-import home4 from "../assets/images/home_4.jpg";
-import home5 from "../assets/images/home_5.jpg";
-import home6 from "../assets/images/home_6.jpg";
-import arch1 from "../assets/images/arch_1.jpg";
-import arch2 from "../assets/images/arch_2.jpg";
-import arch3 from "../assets/images/arch_3.jpg";
-import arch4 from "../assets/images/arch_4.jpg";
-import arch5 from "../assets/images/arch_5.jpg";
+import homeHero from "../assets/images/home_hero.png";
+import heroBath from "../assets/images/div_hero_bathrooms.png";
+import bath1 from "../assets/images/div_feat_bathrooms_1.png";
+import bath2 from "../assets/images/div_feat_bathrooms_2.png";
+import bath3 from "../assets/images/div_feat_bathrooms_3.png";
+import bath4 from "../assets/images/div_feat_bathrooms_4.png";
+import bath5 from "../assets/images/div_feat_bathrooms_5.png";
+import bath6 from "../assets/images/div_quote_bathrooms.png";
+import kitchen1 from "../assets/images/div_feat_kitchens_1.png";
+import kitchen2 from "../assets/images/div_feat_kitchens_2.png";
+import kitchen3 from "../assets/images/div_feat_kitchens_3.png";
+import kitchen4 from "../assets/images/div_feat_kitchens_4.png";
+import kitchen5 from "../assets/images/div_feat_kitchens_5.png";
+import kitchen6 from "../assets/images/div_quote_kitchens.png";
+import surface1 from "../assets/images/div_feat_surfaces_1.png";
+import surface2 from "../assets/images/div_feat_surfaces_2.png";
+import surface3 from "../assets/images/div_feat_surfaces_3.png";
+import surface4 from "../assets/images/div_feat_surfaces_4.png";
+import surface5 from "../assets/images/div_feat_surfaces_5.png";
+import surface6 from "../assets/images/div_quote_surfaces.png";
+import wood1 from "../assets/images/div_feat_wood_1.png";
+import wood2 from "../assets/images/div_feat_wood_2.png";
+import wood3 from "../assets/images/div_feat_wood_3.png";
+import wood4 from "../assets/images/div_feat_wood_4.png";
+import home1 from "../assets/images/div_feat_home_1.png";
+import home2 from "../assets/images/div_feat_home_2.png";
+import home3 from "../assets/images/div_feat_home_3.png";
+import home4 from "../assets/images/div_feat_home_4.png";
+import home5 from "../assets/images/div_feat_home_5.png";
+import home6 from "../assets/images/div_quote_home.png";
+import arch1 from "../assets/images/arch_1.png";
+import arch2 from "../assets/images/arch_2.png";
+import arch3 from "../assets/images/arch_3.png";
+import arch4 from "../assets/images/about_mission.png";
+import arch5 from "../assets/images/about_vision.png";
+
+import shopArt from "../assets/images/shop_art.png";
+import shopBar from "../assets/images/shop_bar.png";
+import shopBathAcc from "../assets/images/shop_bath_acc.png";
+import shopCandles from "../assets/images/shop_candles.png";
+import shopCrockery from "../assets/images/shop_crockery.png";
+import shopDinnerware from "../assets/images/shop_dinnerware.png";
+import shopFurniture from "../assets/images/shop_furniture.png";
+import shopGlassware from "../assets/images/shop_glassware.png";
+import shopKids from "../assets/images/shop_kids.png";
+import shopKitchenTools from "../assets/images/shop_kitchen_tools.png";
+import shopLights from "../assets/images/shop_lights.png";
+import shopPhotoFrames from "../assets/images/shop_photo_frames.png";
+import shopTableware from "../assets/images/shop_tableware.png";
+import shopTeaCoffee from "../assets/images/shop_tea_coffee.png";
+import shopVases from "../assets/images/shop_vases.png";
 
 export const IMAGES = {
+  homeHero,
   heroBath,
   bath: [bath1, bath2, bath3, bath4, bath5, bath6],
   kitchen: [kitchen1, kitchen2, kitchen3, kitchen4, kitchen5, kitchen6],
@@ -45,6 +63,12 @@ export const IMAGES = {
   wood: [wood1, wood2, wood3, wood4],
   home: [home1, home2, home3, home4, home5, home6],
   architecture: [arch1, arch2, arch3, arch4, arch5],
+  shop: [
+    shopArt, shopBar, shopBathAcc, shopCandles, shopCrockery, 
+    shopDinnerware, shopFurniture, shopGlassware, shopKids, 
+    shopKitchenTools, shopLights, shopPhotoFrames, shopTableware, 
+    shopTeaCoffee, shopVases
+  ],
 };
 
 
@@ -185,6 +209,10 @@ export const ABOUT = {
     "At the heart of all we do, lie the aspirations of the customer. We first understand what they seek, then craft an immersive experience for them. Our proposals are always of the highest quality, paired with extensive knowledge and counsel, rounded off end to end with finesse. We go the distance to earn our trust and faith. For some, it is a sale — for others, it's the beginning of a valued relationship.",
   motto:
     "Our motto is never say never, and we continue to strive for perfecting your homes. Through our concerted, loyalty-driven approach, we lead in the sphere of luxury interiors. We got there by changing the way we engage with the luxury interiors customer.",
+  images: {
+    vision: IMAGES.architecture[3],
+    mission: IMAGES.architecture[4],
+  }
 };
 
 export const STATS = [
