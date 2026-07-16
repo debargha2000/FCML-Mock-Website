@@ -1,0 +1,30 @@
+﻿name: Orphan and Dead-code Check
+
+on: [push, pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Run depcheck
+        run: npx depcheck --json > depcheck-output.json || true
+      - name: Run madge orphans
+        run: npx madge --extensions ts,tsx --orphans src > madge-orphans.txt || true
+      - name: Run ts-prune
+        run: npx ts-prune --project ./tsconfig.json | tee ts-prune.txt || true
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: dead-code-reports
+          path: |
+            depcheck-output.json
+            madge-orphans.txt
+            ts-prune.txt
+
